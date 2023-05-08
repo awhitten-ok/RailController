@@ -17,9 +17,10 @@ class stepperController {
     int LockState;
     int offSet;
     long homePosition;
-    long lock1Position;
-    long lock2Position;
-    long lock3Position;
+    
+//    long lock1Position;
+//    long lock2Position;
+//    long lock3Position;
     char* pTopic;
     char* sTopic;
 
@@ -40,12 +41,12 @@ class stepperController {
     int getLockState();
     int getOffSet();
     int getHasRun();
+    long getLockPosition(int position);
     AccelStepper getStepper();
     long getHomePosition();
-    long getLock1Position();
-    long getLock2Position();
-    long getLock3Position();
-    void  setOffSet(int x);
+ 
+   
+    void setOffSet(int x);
     void setProxState(int state);
     void setLockState(int state);
     void setHasRun(int state);

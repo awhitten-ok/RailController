@@ -2,12 +2,16 @@
 #include <PubSubClient.h>
 #include "stepperController.h"
 
+
+
 void clientConnect() {
 
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
-  const char* pTopic = "Assa1/response";
-  const char* sTopic = "Assa1/command";
+ 
+const char* pTopic = "DRK2/response";
+const char* sTopic = "DRK2/command";
+  const char* user = "DRK2";
 
 
   //Loops until WiFi is connected
@@ -28,7 +32,7 @@ void clientConnect() {
   while (!client.connected()) {
     Serial.println("Connecting to MQTT...");
 
-    if (client.connect("Assa1", mqttUser, mqttPassword, pTopic,0,false,"-1")) { //Change ClientID for each rail
+    if (client.connect(user, mqttUser, mqttPassword, pTopic,0,false,"-1")) { //Change ClientID for each rail
 
       Serial.println("connected");
 
@@ -65,18 +69,30 @@ void callback(char* topic, byte* payload, unsigned int length) {
   if (tempMessage.equals("moveToPosition0")) {
     stepControl.moveToPosition(stepControl.getHomePosition(), client);
   } else if (tempMessage.equals("moveToPosition1")) {
-      stepControl.moveToPosition(stepControl.getLock1Position(), client);
+      stepControl.moveToPosition(stepControl.getLockPosition(0), client);
       //Serial.println("Error after callback call");
       yield();
   }else if (tempMessage.equals("moveToPosition2")) {
-      stepControl.moveToPosition(stepControl.getLock2Position(), client);
+      stepControl.moveToPosition(stepControl.getLockPosition(1), client);
       //Serial.println("Error after callback call");
       yield();
   }else if (tempMessage.equals("moveToPosition3")) {
-      stepControl.moveToPosition(stepControl.getLock3Position(), client);
+      stepControl.moveToPosition(stepControl.getLockPosition(2), client);
       //Serial.println("Error after callback call");
-      yield();
-  } else if (tempMessage.equals("openLock")) {
+      yield();  
+  }else if (tempMessage.equals("moveToPosition4")) {
+      stepControl.moveToPosition(stepControl.getLockPosition(3), client);
+      //Serial.println("Error after callback call");
+      yield();  
+  }else if (tempMessage.equals("moveToPosition5")) {
+      stepControl.moveToPosition(stepControl.getLockPosition(4), client);
+      //Serial.println("Error after callback call");
+      yield();  
+  }else if (tempMessage.equals("moveToPosition6")) {
+      stepControl.moveToPosition(stepControl.getLockPosition(5), client);
+      //Serial.println("Error after callback call");
+      yield();  
+  }else if (tempMessage.equals("openLock")) {
     stepControl.openLock(client);
     yield();
   } else if(tempMessage.equals("areYouReady")){

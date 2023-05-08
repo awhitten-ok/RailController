@@ -1,6 +1,8 @@
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 
+
+
 #include "stepperController.h"
 const char* ssid = "OpenKey_Wifi";
 const char* password = "OpenKey is #1 in keys!";
@@ -10,8 +12,8 @@ const char* mqttServer = "192.168.1.152";
 const char* mqttUser = NULL;
 const char* mqttPassword = NULL;
 int mqttPort = 1883;
-const char* pTopic = "Assa1/response";
-const char* sTopic = "Assa1/command";
+const char* pTopic = "DRK2/response";
+const char* sTopic = "DRK2/command";
 
 WiFiClient espClient;
 PubSubClient client(espClient);
