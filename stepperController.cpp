@@ -1,25 +1,25 @@
 #include <PubSubClient.h>
 #include <AccelStepper.h>
 #include "stepperController.h"
-
+                                         //Rail   #
 const long lockPositions[15][6] = {
-    {1185, 3280, 5761, 181, 2478, 4937}, //DRK1 0
-    {1283, 3766, 6006, 356, 2742, 5181}, //DRK2 1
-    {947, 3285, 5645, 500, 2778, 5247}, //DRK3 2
-    {1272, 2796, 5339, 383, 2377, 4499}, //DRK4 3
-    {1093, 3200, 5392, 354, 2450, 4535}, //DRK5 4
-    {1503, 3918, 5729, 513, 2995, 4807}, //DRK6 5
-    {1245, 3707, 5837, 303, 2728, 4945},     //Salto1 6
-    {1017, 3334, 5854, 215, 2430, 4955},     //Miwa1 7
-    {1296,  3371,  5475,  309, 2357, 4550}, //DRK7 8
-    {1450, 3477, 5456, 493, 2580, 4554},     //Kaba1 9
-    {1561, 3606, 5622, 555, 2667, 4712},     //Kaba2 10 REDO POSITIONING---
-    {1543, 3526, 5578, 655, 2526, 4660},   //Kaba3 11
-    {1266, 3346, 5500, 343, 2423, 4530},     //Assa1 12
-    {1380, 3496, 5657, 383, 2546, 4623},//Assa2 13
-    {1299, 3406, 5589, 383, 2356, 4552}      //Assa3 14
+    {1185, 3280, 5761, 181, 2478, 4937}, //DRK1   0
+    {1283, 3766, 6006, 356, 2742, 5181}, //DRK2   1
+    {817,  3463, 5583, 200, 2505, 4711}, //DRK3   2
+    {1272, 2796, 5339, 383, 2377, 4499}, //DRK4   3
+    {1093, 3200, 5392, 354, 2450, 4535}, //DRK5   4
+    {1503, 3918, 5729, 513, 2995, 4807}, //DRK6   5
+    {1245, 3707, 5837, 303, 2728, 4945}, //Salto1 6
+    {1017, 3334, 5854, 215, 2430, 4955}, //Miwa1  7
+    {1296, 3371, 5475, 309, 2357, 4550}, //DRK7   8
+    {1450, 3477, 5456, 493, 2580, 4554}, //Kaba1  9
+    {1561, 3606, 5622, 555, 2667, 4712}, //Kaba2  10 
+    {1543, 3526, 5578, 655, 2526, 4660}, //Kaba3  11
+    {1266, 3346, 5500, 343, 2423, 4530}, //Assa1  12
+    {1380, 3496, 5657, 383, 2546, 4623}, //Assa2  13
+    {1299, 3406, 5589, 383, 2356, 4552}  //Assa3  14
   };
-int RAIL_NUMBER = 1;
+int RAIL_NUMBER = 2;
 #define stepPin 14
 #define dirPin 12    // Define a stepper and the pins it will use
 #define motorInterfaceType 1
@@ -32,13 +32,8 @@ stepperController::stepperController() {
   offSet = 0;
   hasRun = 0;
   homePosition = 0;//Change to 50?               
-//  lock1Position = 920; //Potentially one variable for all 3 locks depending if lock positions are equidistant 
-//  lock2Position = 3361;
-//  lock3Position = 5951;
-  
-  
-pTopic = "DRK2/response";
-sTopic = "DRK2/command";
+  pTopic = "DRK3/response";
+  sTopic = "DRK3/command";
 
 }
 

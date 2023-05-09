@@ -9,8 +9,8 @@ void clientConnect() {
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
  
-const char* pTopic = "DRK2/response";
-const char* sTopic = "DRK2/command";
+  const char* pTopic = "DRK2/response";
+  const char* sTopic = "DRK2/command";
   const char* user = "DRK2";
 
 

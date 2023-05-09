@@ -12,8 +12,8 @@ const char* mqttServer = "192.168.1.152";
 const char* mqttUser = NULL;
 const char* mqttPassword = NULL;
 int mqttPort = 1883;
-const char* pTopic = "DRK2/response";
-const char* sTopic = "DRK2/command";
+const char* pTopic = "DRK3/response";
+const char* sTopic = "DRK3/command";
 
 WiFiClient espClient;
 PubSubClient client(espClient);
